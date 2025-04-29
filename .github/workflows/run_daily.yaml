@@ -36,5 +36,5 @@ jobs:
       - name: Commit and Push Changes
         run: |
           git add result.csv index.html
-          git commit -m "Update game results from get_game.py [skip ci]" || echo "No changes to commit"
+          git commit -m "Update daily matchups" || echo "No changes to commit"
           git push
