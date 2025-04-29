@@ -1,0 +1,37 @@
+name: Run Daily
+
+on:
+  schedule:
+    - cron: "0 14 * * *"  # Runs daily at 6:00 AM PST (14:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  update-game:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run get_game.py
+        run: python get_game.py
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add result.csv index.html
+          git commit -m "Update game results from get_game.py [skip ci]" || echo "No changes to commit"
+          git push
