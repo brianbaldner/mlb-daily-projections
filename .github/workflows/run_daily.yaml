@@ -5,6 +5,9 @@ on:
     - cron: "0 14 * * *"  # Runs daily at 6:00 AM PST (14:00 UTC)
   workflow_dispatch:
 
+permissions:
+  contents: write  # Grants write permissions to the GITHUB_TOKEN
+
 jobs:
   update-game:
     runs-on: ubuntu-latest

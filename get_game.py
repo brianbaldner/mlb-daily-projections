@@ -97,5 +97,5 @@ result.to_csv("result.csv", encoding='utf-16')
 
 result = result[result["PA"] > 50]
 
-pot = px.scatter(result, x="H / 5ab", y="B / 5ab", color='PA', hover_data={"Name": True, "Net Matchup vs Avg (hits)" : True, "Net Matchup vs Avg (bases)" : True, "Opposing Pitcher" : True,})
+pot = px.scatter(result, x="H / 5ab", y="B / 5ab", color='PA', hover_data={"Name": True, "Net Matchup vs Avg (hits)" : True, "Net Matchup vs Avg (bases)" : True, "Opposing Pitcher" : True,}, title=f"Matchup Analysis for {date}")
 pot.write_html("index.html", include_plotlyjs="cdn")
