@@ -8,7 +8,7 @@ import sys
 
 date  = datetime.now().strftime("%Y-%m-%d")
 
-if sys.argv[1] and sys.argv[1] != "":
+if len(sys.argv) > 1 and sys.argv[1] != "":
     date = sys.argv[1]
 
 greq = session.get(f"https://baseballsavant.mlb.com/schedule?date={date}")
