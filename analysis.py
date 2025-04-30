@@ -42,7 +42,7 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
 
     result = pd.DataFrame()
     for playerid in hitters:
-        time.sleep(0.1)
+        time.sleep(0.5)
         hitter = batter_request(playerid, ["2025", "2024"], phand)
 
         edited_table = hitter.loc[:, ["pitches", "pitch_type", "hits", "singles", "doubles", "triples", "hrs", "pa"]].fillna(0)
