@@ -4,8 +4,8 @@ This repository generates daily MLB matchup projections and an interactive plot.
 
 ## Live Demo
 
-- **Interactive Plot:** [https://brianbaldner.github.io/mlb-daily-projections/](https://brianbaldner.github.io/mlb-daily-projections/)
-- **CSV Data:** [https://brianbaldner.github.io/mlb-daily-projections/result.csv](https://brianbaldner.github.io/mlb-daily-projections/result.csv)
+- **Interactive Plot:** [https://mlb.brianbaldner.com](https://mlb.brianbaldner.com)
+- **CSV Data:** [https://mlb.brianbaldner.com/result.csv](https://mlb.brianbaldner.com/result.csv)
 
 ## How It Works
 
