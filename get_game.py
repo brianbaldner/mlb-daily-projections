@@ -3,10 +3,10 @@ from functions import session
 from analysis import run
 import pandas as pd
 import plotly.express as px
-from datetime import datetime
+from datetime import datetime, timedelta
 import sys
 
-date  = datetime.now().strftime("%Y-%m-%d")
+date  = (datetime.now() + timedelta(hours=3)).strftime("%Y-%m-%d")
 
 if len(sys.argv) > 1 and sys.argv[1] != "":
     date = sys.argv[1]
