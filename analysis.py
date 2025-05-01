@@ -69,6 +69,7 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
         bp = perc * edited_table["bases/pitch"]
         print(f"{names.loc[int(playerid)]["player_name"]} will get {hp.sum()} hits and {bp.sum()} bases per 5 ab")
         result = pd.concat([result, pd.DataFrame([{
+            "Player ID": playerid,
             "Name": names.loc[int(playerid)]["player_name"],
             "Team": team,
             "Opposing Pitcher": pname,
