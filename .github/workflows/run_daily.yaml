@@ -2,8 +2,8 @@ name: Run Daily
 
 on:
   schedule:
-    - cron: "0 6 * * *"    # Runs daily at 10:00 PM PST
-    - cron: "0 17 * * *"   # Runs daily at 9:00 AM PST
+    - cron: "0 5 * * *"    # Runs daily at 10:00 PM PST
+    - cron: "0 16 * * *"   # Runs daily at 9:00 AM PST
   workflow_dispatch:
 
 permissions:

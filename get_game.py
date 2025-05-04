@@ -1,4 +1,5 @@
 import json
+import time
 from functions import session
 from analysis import run
 import pandas as pd
@@ -17,19 +18,27 @@ day = json.loads(greq.text)
 result = pd.DataFrame()
 
 for game in day["schedule"]["dates"][0]["games"]:
-    print(f"Starting {game["teams"]["away"]["team"]["clubName"]} @ {game["teams"]["home"]["team"]["clubName"]}")
-    res = session.get(f"https://baseballsavant.mlb.com/preview?game_pk={game["gamePk"]}&game_date={game["officialDate"]}")
-    home_abbr = game["teams"]["home"]["team"]["abbreviation"]
-    away_abbr = game["teams"]["away"]["team"]["abbreviation"]
-    data = res.text
+    parsed = None
 
-    start_index = data.find("var teams = ")
+    while parsed is None:
+        try:
+            print(f"Starting {game["teams"]["away"]["team"]["clubName"]} @ {game["teams"]["home"]["team"]["clubName"]}")
+            res = session.get(f"https://baseballsavant.mlb.com/preview?game_pk={game["gamePk"]}&game_date={game["officialDate"]}")
+            home_abbr = game["teams"]["home"]["team"]["abbreviation"]
+            away_abbr = game["teams"]["away"]["team"]["abbreviation"]
+            data = res.text
 
-    end_index = data.find(";", start_index + 12)
+            start_index = data.find("var teams = ")
 
-    data = data[start_index + 12:end_index]
+            end_index = data.find(";", start_index + 12)
 
-    parsed = json.loads(data)
+            data = data[start_index + 12:end_index]
+
+            parsed = json.loads(data)
+        except:
+            print(f"Game request error, taking 5 min break")
+            time.sleep(300)
+
 
     home_hitters = []
 
