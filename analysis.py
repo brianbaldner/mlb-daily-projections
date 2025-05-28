@@ -64,7 +64,7 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
         
         pitches = pitcher[pitcher["batter_hand"] == batter_hand]["pitches"]
         perc = pitches / pitches.sum()
-        perc = perc * average_pa * 5
+        perc = perc * average_pa
         hp = perc * edited_table["hit/pitch"]
         bp = perc * edited_table["bases/pitch"]
         print(f"{names.loc[int(playerid)]["player_name"]} will get {hp.sum()} hits and {bp.sum()} bases per 5 ab")
@@ -73,10 +73,10 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
             "Name": names.loc[int(playerid)]["player_name"],
             "Team": team,
             "Opposing Pitcher": pname,
-            "H / 5ab": hp.sum(),
-            "B / 5ab": bp.sum(),
-            "AVG H / 5ab": avghp,
-            "AVG B / 5ab": avgbp,
+            "xBA": hp.sum(),
+            "xSL": bp.sum(),
+            "BA vs Hand": avghp,
+            "SL vs Hand": avgbp,
             "PA": edited_table["pa"].sum()
         }])])
     return result
