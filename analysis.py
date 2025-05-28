@@ -55,8 +55,8 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
         # edited_table = edited_table.sort_values("bases/pitch", ascending=False)
 
         average_pa = edited_table["pitches"].sum() / edited_table["pa"].sum()
-        avghp = edited_table["hits"].sum() / edited_table["pitches"].sum() * average_pa * 5
-        avgbp = edited_table["bases"].sum() / edited_table["pitches"].sum() * average_pa * 5
+        avghp = edited_table["hits"].sum() / edited_table["pitches"].sum() * average_pa
+        avgbp = edited_table["bases"].sum() / edited_table["pitches"].sum() * average_pa
 
         batter_hand = names.loc[int(playerid)]["bat_hand"]
         if batter_hand == "S":
