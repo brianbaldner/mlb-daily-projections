@@ -35,7 +35,7 @@ pitch_types = {
 }
 
 def run(hitters, pitcher, team, phand) -> pd.DataFrame:
-    pitcher = pitcher_req(pitcher, ["2025"])
+    pitcher = pitcher_req(pitcher, ["2026"])
     pname = pitcher['player_name'].iloc[0]
     pitcher["pitch_type"] = pitcher["pitch_type"].apply(lambda x: pitch_types[x])
     pitcher.index = pitcher["pitch_type"]
@@ -43,7 +43,7 @@ def run(hitters, pitcher, team, phand) -> pd.DataFrame:
     result = pd.DataFrame()
     for playerid in hitters:
         time.sleep(0.5)
-        hitter = batter_request(playerid, ["2025", "2024"], phand)
+        hitter = batter_request(playerid, ["2026", "2025"], phand)
 
         edited_table = hitter.loc[:, ["pitches", "pitch_type", "hits", "singles", "doubles", "triples", "hrs", "pa"]].fillna(0)
         edited_table["pitch_type"] = edited_table["pitch_type"].apply(lambda x: pitch_types[x])
